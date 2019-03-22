@@ -22,4 +22,8 @@ class Index extends Api
         $this->success('请求成功');
     }
 
+    public function record()
+    {
+
+    }
 }

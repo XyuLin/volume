@@ -776,7 +776,7 @@ var requirejs, require, define;
 
                 this.ignore = options.ignore;
 
-                //Could have option to init this module in enabled mode,
+                //Could have options to init this module in enabled mode,
                 //or could have been previously marked as enabled. However,
                 //the dependencies are not known until init is called. So
                 //if enabled previously, now trigger dependencies as enabled.

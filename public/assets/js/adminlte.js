@@ -50,7 +50,7 @@ $.AdminLTE.options = {
     //Activate sidebar slimscroll if the fixed layout is set (requires SlimScroll Plugin)
     sidebarSlimScroll: true,
     //Enable sidebar expand on hover effect for sidebar mini
-    //This option is forced to true if both the fixed layout and sidebar mini
+    //This options is forced to true if both the fixed layout and sidebar mini
     //are used together
     sidebarExpandOnHover: false,
     //BoxRefresh Plugin

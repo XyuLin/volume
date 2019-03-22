@@ -75,9 +75,9 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 $(document).on("change", "#c-type", function () {
-                    $("#c-pid option[data-type='all']").prop("selected", true);
-                    $("#c-pid option").removeClass("hide");
-                    $("#c-pid option[data-type!='" + $(this).val() + "'][data-type!='all']").addClass("hide");
+                    $("#c-pid options[data-type='all']").prop("selected", true);
+                    $("#c-pid options").removeClass("hide");
+                    $("#c-pid options[data-type!='" + $(this).val() + "'][data-type!='all']").addClass("hide");
                     $("#c-pid").selectpicker("refresh");
                 });
                 Form.api.bindevent($("form[role=form]"));

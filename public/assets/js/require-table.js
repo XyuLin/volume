@@ -170,7 +170,7 @@ define(['jquery', 'bootstrap', 'moment', 'moment/locale/zh-cn', 'bootstrap-table
                 $('.panel-heading ul[data-field] li a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
                     var field = $(this).closest("ul").data("field");
                     var value = $(this).data("value");
-                    $("select[name='" + field + "'] option[value='" + value + "']", table.closest(".bootstrap-table").find(".commonsearch-table")).prop("selected", true);
+                    $("select[name='" + field + "'] options[value='" + value + "']", table.closest(".bootstrap-table").find(".commonsearch-table")).prop("selected", true);
                     table.bootstrapTable('refresh', {});
                     return false;
                 });

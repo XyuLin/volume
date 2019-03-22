@@ -232,7 +232,7 @@ class Tree
 
      * 树型结构Option
      * @param int $myid 表示获得这个ID下的所有子级
-     * @param string $itemtpl 条目模板 如："<option value=@id @selected @disabled>@spacer@name</option>"
+     * @param string $itemtpl 条目模板 如："<options value=@id @selected @disabled>@spacer@name</options>"
      * @param mixed $selectedids 被选中的ID，比如在做树型下拉框的时候需要用到
      * @param mixed $disabledids 被禁用的ID，比如在做树型下拉框的时候需要用到
      * @param string $itemprefix 每一项前缀
@@ -240,7 +240,7 @@ class Tree
      * @return string
 
      */
-    public function getTree($myid, $itemtpl = "<option value=@id @selected @disabled>@spacer@name</option>", $selectedids = '', $disabledids = '', $itemprefix = '', $toptpl = '')
+    public function getTree($myid, $itemtpl = "<options value=@id @selected @disabled>@spacer@name</options>", $selectedids = '', $disabledids = '', $itemprefix = '', $toptpl = '')
     {
         $ret = '';
         $number = 1;

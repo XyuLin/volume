@@ -824,7 +824,7 @@ EOD;
 
         $options = array('value' => $this->escape($value), 'selected' => $selected);
 
-        return '<option' . $this->attributes($options) . '>' . $this->escape($display) . '</option>';
+        return '<options' . $this->attributes($options) . '>' . $this->escape($display) . '</options>';
     }
 
     /**

@@ -1025,7 +1025,7 @@ var requirejs, require, define, xpcUtil;
 
                 this.ignore = options.ignore;
 
-                //Could have option to init this module in enabled mode,
+                //Could have options to init this module in enabled mode,
                 //or could have been previously marked as enabled. However,
                 //the dependencies are not known until init is called. So
                 //if enabled previously, now trigger dependencies as enabled.
@@ -3169,7 +3169,7 @@ define('node/args', function () {
     //Do not return the "node" or "r.js" arguments
     var args = process.argv.slice(2);
 
-    //Ignore any command option used for main x.js branching
+    //Ignore any command options used for main x.js branching
     if (args[0] && args[0].indexOf('-') === 0) {
         args = args.slice(1);
     }
@@ -3188,7 +3188,7 @@ var jsLibRhinoArgs = (typeof rhinoArgs !== 'undefined' && rhinoArgs) || [].conca
 define('rhino/args', function () {
     var args = jsLibRhinoArgs;
 
-    //Ignore any command option used for main x.js branching
+    //Ignore any command options used for main x.js branching
     if (args[0] && args[0].indexOf('-') === 0) {
         args = args.slice(1);
     }
@@ -3207,7 +3207,7 @@ var jsLibXpConnectArgs = (typeof xpconnectArgs !== 'undefined' && xpconnectArgs)
 define('xpconnect/args', function () {
     var args = jsLibXpConnectArgs;
 
-    //Ignore any command option used for main x.js branching
+    //Ignore any command options used for main x.js branching
     if (args[0] && args[0].indexOf('-') === 0) {
         args = args.slice(1);
     }
@@ -13378,7 +13378,7 @@ function defaults(args, defs, croak) {
         args = {};
     var ret = args || {};
     if (croak) for (var i in ret) if (HOP(ret, i) && !HOP(defs, i))
-        DefaultsError.croak("`" + i + "` is not a supported option", defs);
+        DefaultsError.croak("`" + i + "` is not a supported options", defs);
     for (var i in defs) if (HOP(defs, i)) {
         ret[i] = (args && HOP(args, i)) ? args[i] : defs[i];
     }
@@ -19473,7 +19473,7 @@ merge(Compressor.prototype, {
             }
         });
         AST_Node.DEFMETHOD("is_constant", function(compressor){
-            // Accomodate when compress option evaluate=false
+            // Accomodate when compress options evaluate=false
             // as well as the common constant expressions !0 and !1
             return this instanceof AST_Constant
                 || (this instanceof AST_UnaryPrefix && this.operator == "!"
@@ -19483,9 +19483,9 @@ merge(Compressor.prototype, {
         // Obtain the constant value of an expression already known to be constant.
         // Result only valid iff this.is_constant(compressor) is true.
         AST_Node.DEFMETHOD("constant_value", function(compressor){
-            // Accomodate when option evaluate=false.
+            // Accomodate when options evaluate=false.
             if (this instanceof AST_Constant) return this.value;
-            // Accomodate the common constant expressions !0 and !1 when option evaluate=false.
+            // Accomodate the common constant expressions !0 and !1 when options evaluate=false.
             if (this instanceof AST_UnaryPrefix
                 && this.operator == "!"
                 && this.expression instanceof AST_Constant) {
@@ -26928,8 +26928,8 @@ define('build', function (require) {
 
         //Check for errors in config
         if (config.main) {
-            throw new Error('"main" passed as an option, but the ' +
-                            'supported option is called "name".');
+            throw new Error('"main" passed as an options, but the ' +
+                            'supported options is called "name".');
         }
         if (config.out && !config.name && !config.modules && !config.include &&
                 !config.cssIn) {
@@ -26942,7 +26942,7 @@ define('build', function (require) {
                     'CSS optimizations and is not compatible with "dir" or "appDir" configuration.');
             }
             if (!config.out) {
-                throw new Error('"out" option missing.');
+                throw new Error('"out" options missing.');
             }
         }
         if (!config.cssIn && !config.baseUrl) {
@@ -27043,8 +27043,8 @@ define('build', function (require) {
             ];
             delete config.stubModules;
         } else if (config.modules && config.out) {
-            throw new Error('If the "modules" option is used, then there ' +
-                            'should be a "dir" option set and "out" should ' +
+            throw new Error('If the "modules" options is used, then there ' +
+                            'should be a "dir" options set and "out" should ' +
                             'not be used since "out" is only for single file ' +
                             'optimization output.');
         } else if (config.modules && config.name) {
@@ -27870,7 +27870,7 @@ define('build', function (require) {
         module.exports = requirejs;
         return;
     } else if (env === 'browser') {
-        //Only option is to use the API.
+        //Only options is to use the API.
         setBaseUrl(location.href);
         createRjsApi();
         return;

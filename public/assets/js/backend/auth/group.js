@@ -90,7 +90,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form', 'jstree'], function (
                     var pid = $(this).data("pid");
                     var id = $(this).data("id");
                     if ($(this).val() == id) {
-                        $("option[value='" + pid + "']", this).prop("selected", true).change();
+                        $("options[value='" + pid + "']", this).prop("selected", true).change();
                         Backend.api.toastr.error(__('Can not change the parent to self'));
                         return false;
                     }

@@ -101,12 +101,14 @@ class Rule extends Backend
                 if (!$params['ismenu'] && !$params['pid']) {
                     $this->error(__('The non-menu rule must have parent'));
                 }
-                if ($params['pid'] != $row['pid']) {
-                    $childrenIds = Tree::instance()->init(collection(AuthRule::select())->toArray())->getChildrenIds($row['id']);
-                    if (in_array($params['pid'], $childrenIds)) {
-                        $this->error(__('Can not change the parent to child'));
-                    }
-                }
+
+//                if ($params['pid'] != $row['pid']) {
+//                    $childrenIds = Tree::instance()->init(collection(AuthRule::select())->toArray())->getChildrenIds($row['id']);
+//
+//                    if (in_array($params['pid'], $childrenIds)) {
+//                        $this->error(__('Can not change the parent to child'));
+//                    }
+//                }
                 //这里需要针对name做唯一验证
                 $ruleValidate = \think\Loader::validate('AuthRule');
                 $ruleValidate->rule([

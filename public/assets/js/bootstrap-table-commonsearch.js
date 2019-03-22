@@ -81,7 +81,7 @@
                     if (typeof vObjCol.searchList === 'function') {
                         htmlForm.push(vObjCol.searchList.call(this, vObjCol));
                     } else {
-                        var optionList = [sprintf('<option value="">%s</option>', that.options.formatCommonChoose())];
+                        var optionList = [sprintf('<options value="">%s</options>', that.options.formatCommonChoose())];
                         if (typeof vObjCol.searchList === 'object' && typeof vObjCol.searchList.then === 'function') {
                             (function (vObjCol, that) {
                                 $.when(vObjCol.searchList).done(function (ret) {
@@ -144,7 +144,7 @@
     var createOptionList = function (searchList, vObjCol, that) {
         var isArray = searchList.constructor === Array;
         var optionList = [];
-        optionList.push(sprintf('<option value="">%s</option>', that.options.formatCommonChoose()));
+        optionList.push(sprintf('<options value="">%s</options>', that.options.formatCommonChoose()));
         $.each(searchList, function (key, value) {
             if (value.constructor === Object) {
                 key = value.id;
@@ -152,7 +152,7 @@
             } else {
                 key = isArray ? value : key;
             }
-            optionList.push(sprintf("<option value='" + key + "' %s>" + value + "</option>", key == vObjCol.defaultValue ? 'selected' : ''));
+            optionList.push(sprintf("<options value='" + key + "' %s>" + value + "</options>", key == vObjCol.defaultValue ? 'selected' : ''));
         });
         return optionList;
     };
@@ -173,7 +173,7 @@
         var value = '';
         $("form.form-commonsearch .operate", that.$commonsearch).each(function (i) {
             var name = $(this).data("name");
-            var sym = $(this).is("select") ? $("option:selected", this).val() : $(this).val().toUpperCase();
+            var sym = $(this).is("select") ? $("options:selected", this).val() : $(this).val().toUpperCase();
             var obj = $("[name='" + name + "']", that.$commonsearch);
             if (obj.size() == 0)
                 return true;
@@ -327,7 +327,7 @@
             if (obj.size() > 0) {
                 var value = $(this).data("value");
                 if (obj.is("select")) {
-                    $("option[value='" + value + "']", obj).prop("selected", true);
+                    $("options[value='" + value + "']", obj).prop("selected", true);
                 } else if (obj.size() > 1) {
                     $("form [name='" + $(this).data("field") + "'][value='" + value + "']", that.$commonsearch).prop("checked", true);
                 } else {
