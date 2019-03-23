@@ -83,21 +83,30 @@ class Wechat
                     "openid"       => $openid,
                     "lang"         => 'zh_CN'
                 ];
-                $ret = Http::post(self::GET_USERINFO_URL, $queryarr);
-                $userinfo = json_decode($ret, TRUE);
-                if (!$userinfo || isset($userinfo['errcode']))
-                    return [];
-                $userinfo = $userinfo ? $userinfo : [];
-                $userinfo['avatar'] = isset($userinfo['headimgurl']) ? $userinfo['headimgurl'] : '';
-                $data = [
-                    'access_token'  => $access_token,
-                    'refresh_token' => $refresh_token,
-                    'expires_in'    => $expires_in,
-                    'openid'        => $openid,
-                    'unionid'       => $unionid,
-                    'userinfo'      => $userinfo
-                ];
-                return $data;
+
+                  $req = "http://api.hanzhong.xinlianhui.com.cn/member/verify/".$queryarr['openid']."?access-token=MYkE5oraAzBBt_Rd-NzBY5ym0T4pnv8M";
+                  $ret = Http::get($req);
+                  $ret  = json_decode($ret, TRUE);
+                  if($ret['type'] == 'error') {
+                      return false;
+                  } else {
+                      return $ret['member']['openid'];
+                  }
+//                $ret = Http::post(self::GET_USERINFO_URL, $queryarr);
+//                $userinfo = json_decode($ret, TRUE);
+//                if (!$userinfo || isset($userinfo['errcode']))
+//                    return [];
+//                $userinfo = $userinfo ? $userinfo : [];
+//                $userinfo['avatar'] = isset($userinfo['headimgurl']) ? $userinfo['headimgurl'] : '';
+//                $data = [
+//                    'access_token'  => $access_token,
+//                    'refresh_token' => $refresh_token,
+//                    'expires_in'    => $expires_in,
+//                    'openid'        => $openid,
+//                    'unionid'       => $unionid,
+//                    'userinfo'      => $userinfo
+//                ];
+//                return $data;
             }
         }
         return [];

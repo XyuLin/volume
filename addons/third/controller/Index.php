@@ -84,23 +84,28 @@ class Index extends Controller
         $platform = $this->request->param('platform');
 
         // 成功后返回之前页面
-        $url = Session::has("redirecturl") ? Session::pull("redirecturl") : url('index/user/index');
+        $url = Session::has("redirecturl") ? Session::pull("redirecturl") : 'http://wenjuan.hanzhong.xinlianhui.com.cn/web';
 
         // 授权成功后的回调
         $result = $this->app->{$platform}->getUserInfo();
-        if ($result) {
-            $loginret = Service::connect($platform, $result);
-            if ($loginret) {
-                $synchtml = '';
-                ////////////////同步到Ucenter////////////////
-                if (defined('UC_STATUS') && UC_STATUS) {
-                    $uc = new \addons\ucenter\library\client\Client();
-                    $synchtml = $uc->uc_user_synlogin($this->auth->id);
-                }
-                $this->success(__('登录成功') . $synchtml, $url);
-            }
+        if($result == false) {
+            $this->redirect($url);
+        } else{
+            $this->redirect($url);
         }
-        $this->error(__('操作失败'), $url);
+//        if ($result) {
+//            $loginret = Service::connect($platform, $result);
+//            if ($loginret) {
+//                $synchtml = '';
+//                ////////////////同步到Ucenter////////////////
+//                if (defined('UC_STATUS') && UC_STATUS) {
+//                    $uc = new \addons\ucenter\library\client\Client();
+//                    $synchtml = $uc->uc_user_synlogin($this->auth->id);
+//                }
+//                $this->success(__('登录成功') . $synchtml, $url);
+//            }
+//        }
+//        $this->error(__('操作失败'), $url);
     }
 
 }

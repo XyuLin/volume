@@ -2,6 +2,7 @@
 
 namespace app\admin\model;
 
+use app\common\model\Paper;
 use think\Model;
 
 
@@ -23,7 +24,11 @@ class Problem extends Model
 
     // 追加属性
     protected $append = [
-
+        'a_name',
+        'b_name',
+        'c_name',
+        'd_name',
+        'e_name',
     ];
     
 
@@ -34,6 +39,67 @@ class Problem extends Model
             $row->getQuery()->where($pk, $row[$pk])->update(['weigh' => $row[$pk]]);
         });
     }
+
+    public function getANameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','A')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['A'];
+        }
+    }
+
+    public function getBNameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','B')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['B'];
+        }
+    }
+
+    public function getCNameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','C')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['C'];
+        }
+    }
+
+    public function getDNameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','D')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['D'];
+        }
+    }
+
+    public function getENameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','E')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['E'];
+        }
+    }
+
+//    public function getFNameAttr($value,$data)
+//    {
+//        $content = Paper::where('key',$data['id']-1)->where('choose','neq','')->value('content');
+//        if(empty($content)) {
+//            return '';
+//        } else {
+//            return $content .'——投票人数 '.$data['F'];
+//        }
+//    }
+
 
     
 
