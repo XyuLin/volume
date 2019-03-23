@@ -29,6 +29,9 @@ class Problem extends Model
         'c_name',
         'd_name',
         'e_name',
+        'h_name',
+        'g_name',
+        'i_name',
     ];
     
 
@@ -90,16 +93,36 @@ class Problem extends Model
         }
     }
 
-//    public function getFNameAttr($value,$data)
-//    {
-//        $content = Paper::where('key',$data['id']-1)->where('choose','neq','')->value('content');
-//        if(empty($content)) {
-//            return '';
-//        } else {
-//            return $content .'——投票人数 '.$data['F'];
-//        }
-//    }
+    public function getHNameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','H')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['H'];
+        }
+    }
 
+
+    public function getGNameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','G')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['G'];
+        }
+    }
+
+    public function getINameAttr($value,$data)
+    {
+        $content = Paper::where('key',$data['id']-1)->where('choose','eq','I')->value('content');
+        if(empty($content)) {
+            return '';
+        } else {
+            return $content .'——投票人数 '.$data['I'];
+        }
+    }
 
     
 
